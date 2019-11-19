@@ -1,6 +1,8 @@
 from ev3dev.ev3 import *
 import time as t
 
+print("hi")
+
 class robot:
     def __init__(self):
         self.btn = Button()
