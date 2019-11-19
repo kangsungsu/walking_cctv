@@ -12,7 +12,7 @@ class robot:
         cs = ColorSensor('in3');         assert cs.connected #컬러센서 연결 확인
         us1 = UltrasonicSensor('in2);       assert us1.connected    #초음파 연결 확인
         us2 = UltrasonicSensor('in4);       assert us2.connected    #초음파2 연결 확인
-        cs.mode = 'COL-REFLECT' #반사광 강도 모드 설
+        cs.mode = 'COL-REFLECT' #반사광 강도 모드 설정
         us.mode = 'US-DIST-CM' #cm로 거리 측정
 
         lm = LargeMotor('outB');        assert lm.connected #연결되었나 확인
