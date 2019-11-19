@@ -32,14 +32,14 @@ class robot:
      
         second_us2_value = us2.value() #mm 단위로 계산
         
-        if first_us2_value <=7:
+        if first_us2_value <=70:
             angle = first_us2_value - second_us2_value
             
             if angle >0:
                 lm.run_to_rel_pos(position_sp = -100, speed_sp = 100, stop_action = "brake")
                 rm.run_to_rel_pos(position_sp = -100, speed_sp = 100, stop_action = "brake")
                 
-        elif first_us2_value >=20:
+        elif first_us2_value >=200:
             angle = first_us2_value - second_us2_value
             
             if angle < 0:
