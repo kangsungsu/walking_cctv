@@ -41,7 +41,6 @@ class robot:
                 
         elif first_us2_value >=200:
 
-            angle = first_us2_value - second_us2_value
             angle = first_us2_value - second_us2_value #두 값을 비교해서 꺾어야하는 지 판단
 
             
