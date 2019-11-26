@@ -11,7 +11,7 @@ class robot:
         rm = LargeMotor('outD'); assert rm.connected 
 
         us_f = UltrasonicSensor('in2'); assert us_f.connected
-        us_r  =UlratrasonicSensor('in4'); assert us_r connected
+        us_r  =UlratrasonicSensor('in4'); assert us_r.connected
 
         cs = ColorSensor('in3'); assert cs.connected
         
