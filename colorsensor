@@ -9,7 +9,11 @@ lm = LargeMotor('outC'); assert lm.connected
 rm = LargeMotor('outD'); assert rm.connected
 
 cs.mode = 'COL-REFLECT'
-count =0
+
+
+
+count = 0
+
 while True:
     lm.run_timed(time_sp = 300, speed_sp = 300)
     rm.run_timed(time_sp= 300, speed_sp = 300)
@@ -34,4 +38,3 @@ while True:
         break
     
 
-                
