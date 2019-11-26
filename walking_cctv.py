@@ -52,7 +52,7 @@ class robot:
 
                 sleep(2)
 
-            else if angle <-500:
+            elif angle <=500:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -63,14 +63,14 @@ class robot:
                 
                 sleep(2)
 
-            else if (right_2 <=70 )and (angle >0):
+            elif (right_2 <=70 )and (angle >0):
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 300, speed_sp = 150)
                 sleep(0.5)
             
-            else if (right_2 >=200) and (angle <0):
+            elif (right_2 >=200) and (angle <0):
                 lm.run.timed(time_sp = 300, speed_sp = 150)
                 sleep(0.5)
 
