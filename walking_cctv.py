@@ -4,7 +4,7 @@ from time import sleep
 class robot:
     def __init__(self):
         self.btn = Button() #혹시 모를 버튼 설정
-
+        
     def launch(self):
         #모터 설정
         lm = LargeMotor('outC'); assert lm.connected
@@ -28,16 +28,15 @@ class robot:
         
             #시작할 때, 센서들의 값 측정
             right_1 =us_r.value()
+
+            #쉬는 시간 0.5초 줘서 간격을 줌
+
+            sleep(0.5)
             color = cs.value()
-
-            #쉬는 시간 1초 줘서 간격을 줌
-
-            sleep(1)
-
             right_2 = us_r.value()
             front = us_f.value()
             angle  = right_1 -  right_2
-            if front <=40:
+            if front <=70:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -47,23 +46,39 @@ class robot:
             
                 sleep(1)
 
-                lm.run_to_rel_pos(position_sp = +175, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -175, speed_sp = 300, stop_action = "brake")
+                lm.run_to_rel_pos(position_sp = +190, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -190, speed_sp = 300, stop_action = "brake")
 
                 sleep(2)
+                
+                
 
             elif angle <=-500:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 sleep(0.5)
-
+                lm.run_timed(time_sp = 300, speed_sp = 300)
+                rm.run_timed(time_sp = 300, speed_sp = 300)
+                
+                sleep(0.5)
+               
                 lm.run_to_rel_pos(position_sp = 300, speed_sp = 300, stop_action = "brake")
                 rm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")
                 
                 sleep(2)
+                
+                lm.run_timed(time_sp = 300, speed_sp = 300)
+                rm.run_timed(time_sp = 300, speed_sp = 300)
+                
+                sleep(0.5)
+                
+               
+                
+            else:
+                print("go")
 
-            elif (right_2 <=70 )and (angle >0):
+            if (right_2 <=70 )and (angle >0):
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -71,11 +86,34 @@ class robot:
                 sleep(0.5)
             
             elif (right_2 >=200) and (angle <0):
+                lm.stop(stop_action = "brake")
+                rm.stop(stop_action = "brake")
                 lm.run_timed(time_sp = 300, speed_sp = 150)
                 sleep(0.5)
-
             
+            else:
+                print("go")
+            
+            if color<15:
+                while True:
+                    lm.run_timed(time_sp = 300, speed_sp = 300)
+                    rm.run_timed(time_sp = 300, speed_sp = 300)
+                    
+                    sleep(0.7)
+                    
+                    color2 = cs.value()
+                    if color2 < 15:
+                        break
+                    
+             
+         
+                        
+            
+                  
+                
 
+           
+           
 
 a = robot()
 a.launch()
