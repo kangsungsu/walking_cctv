@@ -19,8 +19,6 @@ class robot:
         us_r.mode = 'US-DIST-CM'
 
         cs.mode = 'COL-REFLECT'
-
-
         
         while True:
             lm.run_forever(speed_sp = 300)
