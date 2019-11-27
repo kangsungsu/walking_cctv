@@ -4,6 +4,7 @@ from time import sleep
 class robot:
     def __init__(self):
         self.btn = Button() #혹시 모를 버튼 설정
+        self.count = 0
         
     def launch(self):
         #모터 설정
@@ -21,6 +22,7 @@ class robot:
         cs.mode = 'COL-REFLECT'
         
         while True:
+            self.count +=1
             lm.run_forever(speed_sp = 300)
             rm.run_forever(speed_sp = 300)
         
@@ -82,10 +84,9 @@ class robot:
 
                 lm.run_timed(time_sp = 300, speed_sp = 250)
 
-
                 sleep(0.5)
                      
-            if color<15:
+            if color <15 and self.count > 0:
                 while True:
                     lm.run_timed(time_sp = 300, speed_sp = 300)
                     rm.run_timed(time_sp = 300, speed_sp = 300)
@@ -94,18 +95,8 @@ class robot:
                     
                     color2 = cs.value()
                     if color2 < 15:
+                        self.count = -2
                         break
-                
-                        
+                                        
 a = robot()
 a.launch()
-
-            
-            
-
-            
-            
-
-
-
-        
