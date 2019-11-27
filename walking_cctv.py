@@ -35,7 +35,15 @@ class robot:
             front = us_f.value()
             print(front)
             angle  = right_1 -  right_2
-            if front <=70:
+            if color<15:
+                while True:
+                    lm.run_forever(speed_sp = 300)
+                    rm.run_forever(speed_sp = 300)                    
+                    sleep(0.7)
+                    color = cs.value()
+                    if color2 < 15:
+                        break
+            elif front <=70:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -59,13 +67,13 @@ class robot:
                 rm.stop(stop_action = "brake")
 
                 sleep(0.5)
-                lm.run_timed(time_sp = 300, speed_sp = 300)
-                rm.run_timed(time_sp = 300, speed_sp = 300)
+                lm.run_timed(time_sp = 600, speed_sp = 450)
+                rm.run_timed(time_sp = 600, speed_sp = 450)
 
                 sleep(0.5)
 
-                lm.run_to_rel_pos(position_sp = 250, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -250, speed_sp = 300, stop_action = "brake")
+                lm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
                 
                 sleep(2)
 
@@ -79,7 +87,7 @@ class robot:
                
             
 
-            elif (right_2 <=70 )and (angle >0):
+            elif (right_2 <=100 )and (angle >0):
 
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
