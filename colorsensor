@@ -9,13 +9,11 @@ lm = LargeMotor('outC'); assert lm.connected
 rm = LargeMotor('outD'); assert rm.connected
 
 cs.mode = 'COL-REFLECT'
-<<<<<<< HEAD
-count =0
-=======
-
 
 count = 0
->>>>>>> 5889dd32a05ae8dcd40c21833de7bbdf32475047
+
+
+
 while True:
     lm.run_timed(time_sp = 300, speed_sp = 300)
     rm.run_timed(time_sp= 300, speed_sp = 300)
@@ -34,17 +32,13 @@ while True:
             if cs_b <15:
                 lm.run_to_rel_pos(position_sp = 360, speed_sp = 900, stop_action = "brake")
                 rm.run_to_rel_pos(position_sp = -360, speed_sp = 900, stop_action = "brake")
-<<<<<<< HEAD
                 count+=1
                 break
     if count == 1:
         break
     
 
-=======
-                count +=1
-                break
+
     if count ==1:
         break
->>>>>>> 5889dd32a05ae8dcd40c21833de7bbdf32475047
-                
+
