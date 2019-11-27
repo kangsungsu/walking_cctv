@@ -64,13 +64,13 @@ class robot:
 
                 sleep(0.5)
 
-                lm.run_to_rel_pos(position_sp = 300, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")
+                lm.run_to_rel_pos(position_sp = 250, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -250, speed_sp = 300, stop_action = "brake")
                 
                 sleep(2)
 
-                lm.run_timed(time_sp = 300, speed_sp = 300)
-                rm.run_timed(time_sp = 300, speed_sp = 300)
+                lm.run_timed(time_sp = 300, speed_sp = 450)
+                rm.run_timed(time_sp = 300, speed_sp = 450)
 
 
 
