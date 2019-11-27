@@ -26,7 +26,7 @@ class robot:
         
             #시작할 때, 센서들의 값 측정
             right_1 =us_r.value()
-
+    
             #쉬는 시간 0.5초 줘서 간격을 줌
 
             sleep(0.5)
@@ -39,9 +39,11 @@ class robot:
                 while True:
                     lm.run_forever(speed_sp = 300)
                     rm.run_forever(speed_sp = 300)                    
-                    sleep(0.7)
-                    color = cs.value()
+                    sleep(1)
+                    color2 = cs.value()
                     if color2 < 15:
+                        lm.stop(stop_action = "brake")
+                        rm.stop(stop_action = "brake")
                         break
             elif front <=70:
                 lm.stop(stop_action = "brake")
