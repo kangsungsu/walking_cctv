@@ -4,14 +4,14 @@ from time import sleep
 class robot:
     def __init__(self):
         self.btn = Button() #혹시 모를 버튼 설정
-
+        self.count = 0
     def launch(self):
         #모터 설정
         lm = LargeMotor('outC'); assert lm.connected
         rm = LargeMotor('outD'); assert rm.connected 
 
         us_f = UltrasonicSensor('in2'); assert us_f.connected
-        us_r  =UlratrasonicSensor('in4'); assert us_r connected
+        us_r  =UltrasonicSensor('in4'); assert us_r.connected
 
         cs = ColorSensor('in3'); assert cs.connected
         
@@ -19,25 +19,38 @@ class robot:
         us_r.mode = 'US-DIST-CM'
 
         cs.mode = 'COL-REFLECT'
-
-
         
         while True:
+           
             lm.run_forever(speed_sp = 300)
             rm.run_forever(speed_sp = 300)
         
             #시작할 때, 센서들의 값 측정
             right_1 =us_r.value()
+    
+            #쉬는 시간 0.5초 줘서 간격을 줌
+
+            sleep(0.5)
             color = cs.value()
-
-            #쉬는 시간 1초 줘서 간격을 줌
-
-            sleep(1)
-
             right_2 = us_r.value()
             front = us_f.value()
+            
             angle  = right_1 -  right_2
-            if front <=20:
+            
+            if color <15 and self.count >=0:
+                while True:
+                    lm.run_timed(time_sp = 300, speed_sp = 300)
+                    rm.run_timed(time_sp = 300, speed_sp = 300)
+                    
+                    sleep(0.5)
+                    
+                    color2 = cs.value()
+                    self.count +=1
+                    if color2 < 15 and self.count >5:
+                        self.count = -3
+                        break
+            
+            if front <=70:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -47,45 +60,44 @@ class robot:
             
                 sleep(1)
 
-                lm.run_to_rel_pos(position_sp = -175, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = +175, speed_sp = 300, stop_action = "brake")
+                lm.run_to_rel_pos(position_sp = -190, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = 190, speed_sp = 300, stop_action = "brake")
 
                 sleep(2)
-
-            else if angle <-500:
+               
+            elif angle < -500:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 sleep(0.5)
+                lm.run_timed(time_sp = 600, speed_sp = 450)
+                rm.run_timed(time_sp = 600, speed_sp = 450)
 
-                lm.run_to_rel_pos(position_sp = 300, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")
+                sleep(0.5)
+
+                lm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
                 
                 sleep(2)
 
-            else if (right_2 <=70 )and (angle >0):
+                lm.run_timed(time_sp = 300, speed_sp = 450)
+                rm.run_timed(time_sp = 300, speed_sp = 450)
+            elif (right_2 <=100 )and (angle >0):
+
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                rm.run_timed(time_sp = 300, speed_sp = 150)
+                rm.run_timed(time_sp = 300, speed_sp = 300)
                 sleep(0.5)
             
-            else if (right_2 >=200) and (angle <0):
-                lm.run.timed(time_sp = 300, speed_sp = 150)
+            elif (right_2 >=200) and (angle <0):
+                lm.stop(stop_action = "brake")
+                rm.stop(stop_action = "brake")
+
+                lm.run_timed(time_sp = 300, speed_sp = 250)
+
                 sleep(0.5)
-
-            
-
-
+                     
+                                        
 a = robot()
 a.launch()
-
-            
-            
-
-            
-            
-
-
-
-        

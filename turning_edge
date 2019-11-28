@@ -1,5 +1,5 @@
 from ev3dev.ev3 import *
-import time as sleep
+from time import sleep
 
 us1 = UltrasonicSensor('in2'); assert us1.connected #Connection Sideus
 us2 =UltrasonicSensor('in4'); assert us2.connected #Connection Frontus
@@ -15,21 +15,27 @@ while True:
     us2_a = us2.value() #measure the distance between side wall
 
     if us1_a <=70: #measure the distance between front wall and ev3
-        lm.run_to_rel_pos(position_sp = -100, speed_sp = 300, stop_action= "brake")
-        rm.run_to_rel_pos(position_sp = 100, speed_sp = 300, stop_action = "brake")
+        lm.run_to_rel_pos(position_sp = -230, speed_sp = 300, stop_action= "brake")
+        rm.run_to_rel_pos(position_sp = 230, speed_sp = 300, stop_action = "brake")
 
         sleep(3) #give time to move motors
 
 #move forward
-    lm.run_timed(time_sp = 1000, speed_sp = 500)
-    rm.run_timed(time_sp = 1000, speed_Sp = 500)
-
+    lm.run_timed(time_sp = 600, speed_sp = 500)
+    rm.run_timed(time_sp = 600, speed_sp = 500)
+    
+	
     sleep(1)
+
+    lm.run_to_rel_pos(position_sp = 15, speed_sp = 300, stop_action = "brake")
+    rm.run_to_rel_pos(position_sp = -15, speed_sp = 300, stop_action = "brake")
+
+    sleep(0.5)
 
     us2_b = us2.value()
 
     if (us2_b - us2_a) > 700:#measure if ev3 has to turn right
-        lm.run_to_rel_pos(position_sp = 100, speed_sp = 300, stop_action = "brake")
-        rm.run_to_rel_pos(position_sp = -100, speed_sp = 300, stop_action = "brake")
+        lm.run_to_rel_pos(position_sp = 230, speed_sp = 300, stop_action = "brake")
+        rm.run_to_rel_pos(position_sp = -230, speed_sp = 300, stop_action = "brake")
 
         sleep(3)
