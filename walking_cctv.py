@@ -96,7 +96,7 @@ class robot:
 
                 lm.run_timed(time_sp = 300, speed_sp = 450)
                 rm.run_timed(time_sp = 300, speed_sp = 450)
-            elif (right_2 <=100 ):
+            elif (right_2 <=80 ):
 
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
