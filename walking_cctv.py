@@ -37,18 +37,32 @@ class robot:
             
             angle  = right_1 -  right_2
             
-            if color <15 and self.count >=0:
+            if color <15:
+                flag=0
                 while True:
-                    lm.run_timed(time_sp = 300, speed_sp = 300)
-                    rm.run_timed(time_sp = 300, speed_sp = 300)
                     
                     sleep(0.5)
                     
-                    color2 = cs.value()
-                    self.count +=1
-                    if color2 < 15 and self.count >5:
-                        self.count = -3
+                    color = cs.value()
+                    while color>15:
+                        sleep(0.5)
+                        color=cs.value()
+                        while color<15:
+                            sleep(0.5)
+                            color=cs.value()
+                            while color>15:
+                                flag=1
+                                if flag==1:
+                                    break
+                        if flag==1:
+                            break
+                    if flag==1:
                         break
+                if flag==1:
+                    break
+                        
+                        
+                        
             
             if front <=70:
                 lm.stop(stop_action = "brake")
