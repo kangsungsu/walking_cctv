@@ -102,15 +102,15 @@ class robot:
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 300, speed_sp = 300)
-                sleep(0.5)
+                sleep(0.8)
             
             elif (right_2 >=200) and (angle <0):
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                lm.run_timed(time_sp = 300, speed_sp = 250)
+                lm.run_timed(time_sp = 270, speed_sp = 250)
 
-                sleep(0.5)
+                sleep(1.5)
                      
                                         
 a = robot()
