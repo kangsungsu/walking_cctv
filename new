@@ -54,12 +54,12 @@ class robot:
                                 flag=1
                                 if flag==1:
                                     break
+                            if flag==1:
+                                break
                         if flag==1:
                             break
                     if flag==1:
-                        break
-                if flag==1:
-                    break
+                         break
                         
                         
                         
@@ -97,7 +97,7 @@ class robot:
                 lm.run_timed(time_sp = 300, speed_sp = 450)
                 rm.run_timed(time_sp = 300, speed_sp = 450)
                 
-            if self.count >=2:
+            if self.count >=3:
                     lm.stop(stop_action = "brake")
                     rm.stop(stop_action = "brake")
 
@@ -107,7 +107,7 @@ class robot:
             
                 
                 
-            if right_2 <=100 :
+            elif right_2 <=100 :
 
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
@@ -119,7 +119,7 @@ class robot:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
                 self.count +=1
-                lm.run_timed(time_sp = 270, speed_sp = 250)
+                lm.run_timed(time_sp = 350, speed_sp = 350)
 
                 sleep(1.5)
                      
