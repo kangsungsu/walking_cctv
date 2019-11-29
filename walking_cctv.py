@@ -94,14 +94,18 @@ class robot:
                 
                 sleep(2)
 
+
                 lm.run_timed(time_sp = 400, speed_sp = 450)
                 rm.run_timed(time_sp = 400, speed_sp = 450)
-            elif (right_2 <=100 )and (angle >0):
+
+            elif (right_2 <=120 ):
                 print("right1")
+
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                rm.run_timed(time_sp = 300, speed_sp = 300)
+                rm.run_timed(time_sp = 250, speed_sp = 250)
+
                 sleep(1.5)
             
             elif (right_2 >=200) and (angle <0):
@@ -109,12 +113,14 @@ class robot:
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                lm.run_timed(time_sp = 275, speed_sp = 275)
+                lm.run_timed(time_sp = 325, speed_sp = 325)
 
                 sleep(1.5)
 
-           if (us_f.value() > 2000) and (us_r.value() >2000):
-               lm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_
+   
+
+
+              
                      
                                         
 a = robot()

@@ -1,0 +1,13 @@
+from ev3dev.ev3 import *
+from time import sleep
+lm = LargeMotor('outC'); assert lm.connected
+rm = LargeMotor('outD'); assert rm.connected 
+while true:
+    us_f = UltrasonicSensor('in2'); assert us_f.connected
+    us_r  =UltrasonicSensor('in4'); assert us_r.connected
+
+    print("front")
+    print(us_f)
+    print("right")
+    print(us_r)
+    sleep(0.2)
