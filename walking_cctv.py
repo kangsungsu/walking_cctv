@@ -21,41 +21,49 @@ class robot:
         cs.mode = 'COL-REFLECT'
         
         while True:
-            self.count+=1
-            lm.run_forever(speed_sp = 300)
-            rm.run_forever(speed_sp = 300)
-        
+            lm.run_forever(speed_sp = 200)
+            rm.run_forever(speed_sp = 200)
+                     
             #시작할 때, 센서들의 값 측정
             right_1 =us_r.value()
     
             #쉬는 시간 0.5초 줘서 간격을 줌
 
-            sleep(0.5)
+            sleep(1)
             color = cs.value()
-            print(color)
+            
             right_2 = us_r.value()
             front = us_f.value()
-            
+            print(right_2)
             angle  = right_1 -  right_2
-            
-            if (0 < color <8) and self.count >=0:
+           
+            if color <15:
+                flag=0
                 while True:
-                    print("0")
-                    lm.run_timed(time_sp = 600, speed_sp = 300)
-                    rm.run_timed(time_sp = 600, speed_sp = 300)
-                    
-                    sleep(1.5)
-                    
-                    color2 = cs.value()
-                    print(color2)
-                    print("hello world")
-                    self.count +=1
-                    if color2 < 8 and self.count >5:
-                        print('x')
-                        self.count = -10
+
+                    color = cs.value()
+                    while color>15:
+                        sleep(0.5)
+                        color=cs.value()
+                        while color<15:
+                            sleep(0.5)
+                            color=cs.value()
+                            while color>15:
+                                flag=1
+                                if flag==1:
+                                    break
+                            if flag==1:
+                                break
+                        if flag==1:
+                            break
+                    if flag==1:
                         break
+                        
+                        
+                        
             
             if front <=70:
+                print("front")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -71,37 +79,42 @@ class robot:
                 sleep(2)
                
             elif angle < -500:
+                print("angle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                sleep(0.5)
-                lm.run_timed(time_sp = 600, speed_sp = 450)
-                rm.run_timed(time_sp = 600, speed_sp = 450)
+                sleep(1.5)
+                lm.run_timed(time_sp = 800, speed_sp = 450)
+                rm.run_timed(time_sp = 800, speed_sp = 450)
 
-                sleep(0.5)
+                sleep(1.5)
 
                 lm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
                 rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
                 
                 sleep(2)
 
-                lm.run_timed(time_sp = 300, speed_sp = 450)
-                rm.run_timed(time_sp = 300, speed_sp = 450)
+                lm.run_timed(time_sp = 400, speed_sp = 450)
+                rm.run_timed(time_sp = 400, speed_sp = 450)
             elif (right_2 <=100 )and (angle >0):
-
+                print("right1")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 300, speed_sp = 300)
-                sleep(0.5)
+                sleep(1.5)
             
             elif (right_2 >=200) and (angle <0):
+                print("right2")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                lm.run_timed(time_sp = 300, speed_sp = 250)
+                lm.run_timed(time_sp = 275, speed_sp = 275)
 
-                sleep(0.5)
+                sleep(1.5)
+
+           if (us_f.value() > 2000) and (us_r.value() >2000):
+               lm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_
                      
                                         
 a = robot()
