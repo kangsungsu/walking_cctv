@@ -21,7 +21,7 @@ class robot:
         cs.mode = 'COL-REFLECT'
         
         while True:
-           
+            self.count+=1
             lm.run_forever(speed_sp = 300)
             rm.run_forever(speed_sp = 300)
         
@@ -32,22 +32,27 @@ class robot:
 
             sleep(0.5)
             color = cs.value()
+            print(color)
             right_2 = us_r.value()
             front = us_f.value()
             
             angle  = right_1 -  right_2
             
-            if color <15 and self.count >=0:
+            if (0 < color <8) and self.count >=0:
                 while True:
-                    lm.run_timed(time_sp = 300, speed_sp = 300)
-                    rm.run_timed(time_sp = 300, speed_sp = 300)
+                    print("0")
+                    lm.run_timed(time_sp = 600, speed_sp = 300)
+                    rm.run_timed(time_sp = 600, speed_sp = 300)
                     
-                    sleep(0.5)
+                    sleep(1.5)
                     
                     color2 = cs.value()
+                    print(color2)
+                    print("hello world")
                     self.count +=1
-                    if color2 < 15 and self.count >5:
-                        self.count = -3
+                    if color2 < 8 and self.count >5:
+                        print('x')
+                        self.count = -10
                         break
             
             if front <=70:
