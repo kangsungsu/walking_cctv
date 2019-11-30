@@ -19,17 +19,17 @@ class robot:
         us_r.mode = 'US-DIST-CM'
 
         cs.mode = 'COL-REFLECT'
-        right_2 =us_r.value()
-        sleep(0.2)
+        
         while True:
             lm.run_forever(speed_sp = 200)
             rm.run_forever(speed_sp = 200)
                      
             #시작할 때, 센서들의 값 측정
-            
+            right_1 =us_r.value()
+            sleep(0.5)
     
             #쉬는 시간 0.5초 줘서 간격을 줌
-            right_1=right_2
+            
             right_2=us_r.value()
             
             color = cs.value()
