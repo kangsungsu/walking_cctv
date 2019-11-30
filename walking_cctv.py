@@ -19,17 +19,19 @@ class robot:
         us_r.mode = 'US-DIST-CM'
 
         cs.mode = 'COL-REFLECT'
-        
+        right_2 =us_r.value()
+        sleep(0.2)
         while True:
             lm.run_forever(speed_sp = 200)
             rm.run_forever(speed_sp = 200)
                      
             #시작할 때, 센서들의 값 측정
-            right_1 =us_r.value()
+            
     
             #쉬는 시간 0.5초 줘서 간격을 줌
-
-            sleep(0.2)
+            right_1=right_2
+            right_2=us_r.value()
+            
             color = cs.value()
             
             right_2 = us_r.value()
@@ -98,7 +100,7 @@ class robot:
 
                 lm.run_timed(time_sp = 600, speed_sp = 450)
                 rm.run_timed(time_sp = 600, speed_sp = 450)
-
+                sleep(0.5)
             elif (right_2 <=200 )and(angle >0):
                 print("left")
 
@@ -107,7 +109,9 @@ class robot:
 
                 rm.run_timed(time_sp = 250, speed_sp = 250)
                 sleep(0.5)
-                
+                lm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
+                sleep(0.5)
             
             elif (right_2 >=300) and (angle <0):
                 print("right")
@@ -115,6 +119,9 @@ class robot:
                 rm.stop(stop_action = "brake")
 
                 lm.run_timed(time_sp = 325, speed_sp = 325)
+                sleep(0.5)
+                lm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
                 sleep(0.5)
            
                                         
