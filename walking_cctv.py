@@ -78,7 +78,7 @@ class robot:
 
                 sleep(2)
                
-            elif (angle < -500)or ((right_1>2200)and (right_2>2200)):
+            elif (angle < -600):
                 print("angle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
