@@ -19,21 +19,20 @@ class robot:
         us_r.mode = 'US-DIST-CM'
 
         cs.mode = 'COL-REFLECT'
-        
+        right_2 =us_r.value()
+        sleep(0.5)
         while True:
-            lm.run_forever(speed_sp = 200)
-            rm.run_forever(speed_sp = 200)
+            lm.run_forever(speed_sp = 100)
+            rm.run_forever(speed_sp = 100)
                      
             #시작할 때, 센서들의 값 측정
-            right_1 =us_r.value()
-            sleep(0.5)
+            
     
             #쉬는 시간 0.5초 줘서 간격을 줌
-            
-            right_2=us_r.value()
-            
+
+            sleep(1)
             color = cs.value()
-            
+            right_1=right_2
             right_2 = us_r.value()
             front = us_f.value()
             
@@ -41,7 +40,6 @@ class robot:
            
             if color <15:
                 flag=0
-                print("block:can't enter")
                 while True:
 
                     color = cs.value()
@@ -66,7 +64,7 @@ class robot:
                         
             
             if front <=70:
-                print("front obstacle")
+                print("front")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -80,8 +78,9 @@ class robot:
                 rm.run_to_rel_pos(position_sp = 190, speed_sp = 300, stop_action = "brake")
 
                 sleep(2)
-            elif (angle < -700):
-                print("corner")
+               
+            elif angle < -700:
+                print("angle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -97,29 +96,33 @@ class robot:
                 sleep(2)
 
 
-                lm.run_timed(time_sp = 600, speed_sp = 200)
-                rm.run_timed(time_sp = 600, speed_sp = 200)
-                sleep(0.5)   
-            
-            elif (right_2 <=200 )and(angle >0):
-                print("left")
+                lm.run_timed(time_sp = 400, speed_sp = 450)
+                rm.run_timed(time_sp = 400, speed_sp = 450)
+
+            elif (right_2 <=120 ) (angle>0):
+                print("right1")
 
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 250, speed_sp = 250)
-                sleep(0.5)
-                
+
+                sleep(1.5)
             
             elif (right_2 >=300) and (angle <0):
-                print("right")
+                print("right2")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
-                lm.run_timed(time_sp = 250, speed_sp = 250)
-                sleep(0.5)
-                
-            
+                lm.run_timed(time_sp = 325, speed_sp = 325)
+
+                sleep(1.5)
+
+   
+
+
+              
+                     
                                         
 a = robot()
 a.launch()
