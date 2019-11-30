@@ -109,9 +109,7 @@ class robot:
 
                 rm.run_timed(time_sp = 250, speed_sp = 250)
                 sleep(0.5)
-                lm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
-                sleep(0.5)
+                
             
             elif (right_2 >=300) and (angle <0):
                 print("right")
@@ -120,9 +118,7 @@ class robot:
 
                 lm.run_timed(time_sp = 325, speed_sp = 325)
                 sleep(0.5)
-                lm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = 50, speed_sp = 100, stop_action = "brake")
-                sleep(0.5)
+                
            
                                         
 a = robot()
