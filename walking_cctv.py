@@ -100,7 +100,7 @@ class robot:
                 lm.run_timed(time_sp = 250, speed_sp = 250)
                 sleep(0.5)
                 
-           elif (angle < -700):
+            elif (angle < -700):
                 print("corner")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
