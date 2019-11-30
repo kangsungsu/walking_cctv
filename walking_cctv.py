@@ -34,11 +34,12 @@ class robot:
             
             right_2 = us_r.value()
             front = us_f.value()
-            print(right_2)
+            
             angle  = right_1 -  right_2
            
             if color <15:
                 flag=0
+                print("block:can't enter")
                 while True:
 
                     color = cs.value()
@@ -63,7 +64,7 @@ class robot:
                         
             
             if front <=70:
-                print("front")
+                print("front obstacle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -79,7 +80,7 @@ class robot:
                 sleep(2)
                
             elif (angle < -600):
-                print("angle")
+                print("corner")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
@@ -95,27 +96,27 @@ class robot:
                 sleep(2)
 
 
-                lm.run_timed(time_sp = 400, speed_sp = 450)
-                rm.run_timed(time_sp = 400, speed_sp = 450)
+                lm.run_timed(time_sp = 600, speed_sp = 450)
+                rm.run_timed(time_sp = 600, speed_sp = 450)
 
-            elif (right_2 <=160 )and(angle >0):
-                print("right1")
+            elif (right_2 <=200 )and(angle >0):
+                print("left")
 
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 250, speed_sp = 250)
 
-                sleep(1.5)
+                
             
-            elif (right_2 >=250) and (angle <0):
-                print("right2")
+            elif (right_2 >=300) and (angle <0):
+                print("right")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 lm.run_timed(time_sp = 325, speed_sp = 325)
 
-                sleep(1.5)
+                
 
    
 
