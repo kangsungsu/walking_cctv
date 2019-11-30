@@ -1,38 +1,41 @@
 from ev3dev.ev3 import *
 from time import sleep
 
+class robot:
+    def __init__(self):
+        self.btn = Button() #혹시 모를 버튼 설정
+        self.count = 0
+    def launch(self):
+        #모터 설정
+        lm = LargeMotor('outC'); assert lm.connected
+        rm = LargeMotor('outD'); assert rm.connected 
 
-#모터 설정
-lm = LargeMotor('outC'); assert lm.connected
-rm = LargeMotor('outD'); assert rm.connected 
+        us_f = UltrasonicSensor('in2'); assert us_f.connected
+        us_r  =UltrasonicSensor('in4'); assert us_r.connected
 
-us_f = UltrasonicSensor('in2'); assert us_f.connected
-us_r  =UltrasonicSensor('in4'); assert us_r.connected
-
-cs = ColorSensor('in3'); assert cs.connected
+        cs = ColorSensor('in3'); assert cs.connected
         
-us_f.mode = 'US-DIST-CM'
-us_r.mode = 'US-DIST-CM'
+        us_f.mode = 'US-DIST-CM'
+        us_r.mode = 'US-DIST-CM'
 
-cs.mode = 'COL-REFLECT'
-right_1 =us_r.value()
-sleep(0.5)
-
-while True:
-    lm.run_forever(speed_sp = 200)
-    rm.run_forever(speed_sp = 200)
+        cs.mode = 'COL-REFLECT'
+        right_2 =us_r.value()
+        sleep(0.5)
+        while True:
+            lm.run_forever(speed_sp = 100)
+            rm.run_forever(speed_sp = 100)
                      
-    #시작할 때, 센서들의 값 측정
+            #시작할 때, 센서들의 값 측정
+            
     
-    
-    #쉬는 시간 0.5초 줘서 간격을 줌
+            #쉬는 시간 0.5초 줘서 간격을 줌
 
             sleep(1)
             color = cs.value()
-            
+            right_1=right_2
             right_2 = us_r.value()
             front = us_f.value()
-            print(right_2)
+            
             angle  = right_1 -  right_2
            
             if color <15:
@@ -76,7 +79,7 @@ while True:
 
                 sleep(2)
                
-            elif angle < -500:
+            elif angle < -700:
                 print("angle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
@@ -96,7 +99,7 @@ while True:
                 lm.run_timed(time_sp = 400, speed_sp = 450)
                 rm.run_timed(time_sp = 400, speed_sp = 450)
 
-            elif (right_2 <=120 ):
+            elif (right_2 <=120 ) (angle>0):
                 print("right1")
 
                 lm.stop(stop_action = "brake")
@@ -106,7 +109,7 @@ while True:
 
                 sleep(1.5)
             
-            elif (right_2 >=200) and (angle <0):
+            elif (right_2 >=300) and (angle <0):
                 print("right2")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
