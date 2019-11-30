@@ -98,7 +98,7 @@ class robot:
                 lm.run_timed(time_sp = 400, speed_sp = 450)
                 rm.run_timed(time_sp = 400, speed_sp = 450)
 
-            elif (right_2 <=160 )(angle >0):
+            elif (right_2 <=160 )and(angle >0):
                 print("right1")
 
                 lm.stop(stop_action = "brake")
