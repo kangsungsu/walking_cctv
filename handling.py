@@ -14,7 +14,7 @@ rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
             
 sleep(1)
 
-lm.run_to_rel_pos(position_sp = direct, speed_sp = 300, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -direct, speed_sp = 300, stop_action = "brake")
 rm.run_to_rel_pos(position_sp = direct, speed_sp = 300, stop_action = "brake")
 
                         
