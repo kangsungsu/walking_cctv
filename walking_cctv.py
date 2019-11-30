@@ -29,7 +29,7 @@ class robot:
     
             #쉬는 시간 0.5초 줘서 간격을 줌
 
-            sleep(1)
+            sleep(0.2)
             color = cs.value()
             
             right_2 = us_r.value()
@@ -106,7 +106,7 @@ class robot:
                 rm.stop(stop_action = "brake")
 
                 rm.run_timed(time_sp = 250, speed_sp = 250)
-
+                sleep(0.5)
                 
             
             elif (right_2 >=300) and (angle <0):
@@ -115,14 +115,8 @@ class robot:
                 rm.stop(stop_action = "brake")
 
                 lm.run_timed(time_sp = 325, speed_sp = 325)
-
-                
-
-   
-
-
-              
-                     
+                sleep(0.5)
+           
                                         
 a = robot()
 a.launch()
