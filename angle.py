@@ -7,34 +7,37 @@ rm = LargeMotor('outD'); assert rm.connected
             
 sleep(4)
 
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 150, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 150, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -100, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 100, speed_sp = 300, stop_action = "brake")
 sleep(4)
 lm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
 rm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 450, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 450, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 300, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 600, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 600, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -400, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 400, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 750, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 750, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -500, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 500, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 900, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 900, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -600, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 600, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 1150, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 1150, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -700, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 700, speed_sp = 300, stop_action = "brake")
 
 sleep(4)
-lm.run_to_rel_pos(position_sp = -200, speed_sp = 1300, stop_action = "brake")
-rm.run_to_rel_pos(position_sp = 200, speed_sp = 1300, stop_action = "brake")
+lm.run_to_rel_pos(position_sp = -800, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 800, speed_sp = 300, stop_action = "brake")
+sleep(4)
+lm.run_to_rel_pos(position_sp = -900, speed_sp = 300, stop_action = "brake")
+rm.run_to_rel_pos(position_sp = 900, speed_sp = 300, stop_action = "brake")
                         
         
