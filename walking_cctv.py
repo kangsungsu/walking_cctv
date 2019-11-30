@@ -81,26 +81,7 @@ class robot:
 
                 sleep(2)
                
-            elif (angle < -600):
-                print("corner")
-                lm.stop(stop_action = "brake")
-                rm.stop(stop_action = "brake")
-
-                sleep(1.5)
-                lm.run_timed(time_sp = 800, speed_sp = 450)
-                rm.run_timed(time_sp = 800, speed_sp = 450)
-
-                sleep(1.5)
-
-                lm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
-                
-                sleep(2)
-
-
-                lm.run_timed(time_sp = 600, speed_sp = 450)
-                rm.run_timed(time_sp = 600, speed_sp = 450)
-                sleep(0.5)
+            
             elif (right_2 <=200 )and(angle >0):
                 print("left")
 
@@ -119,7 +100,26 @@ class robot:
                 lm.run_timed(time_sp = 325, speed_sp = 325)
                 sleep(0.5)
                 
-           
+           elif (angle < -700):
+                print("corner")
+                lm.stop(stop_action = "brake")
+                rm.stop(stop_action = "brake")
+
+                sleep(1.5)
+                lm.run_timed(time_sp = 800, speed_sp = 450)
+                rm.run_timed(time_sp = 800, speed_sp = 450)
+
+                sleep(1.5)
+
+                lm.run_to_rel_pos(position_sp = 200, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
+                
+                sleep(2)
+
+
+                lm.run_timed(time_sp = 600, speed_sp = 200)
+                rm.run_timed(time_sp = 600, speed_sp = 200)
+                sleep(0.5)
                                         
 a = robot()
 a.launch()
