@@ -4,7 +4,7 @@ from time import sleep
 lm = LargeMotor('outC'); assert lm.connected
 rm = LargeMotor('outD'); assert rm.connected 
 
-direct=int(input("방향각을 입력하세요(왼쪽기준"))
+direct=int(input("turn angle(left)"))
 direct=direct*20/9
 lm.stop(stop_action = "brake")
 rm.stop(stop_action = "brake")

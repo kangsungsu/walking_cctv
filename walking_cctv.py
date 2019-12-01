@@ -1,10 +1,7 @@
 from ev3dev.ev3 import *
 from time import sleep
 
-class robot:
-    def __init__(self):
-        self.btn = Button() #혹시 모를 버튼 설정
-        self.count = 0
+class robot:    
     def launch(self):
         #모터 설정
         lm = LargeMotor('outC'); assert lm.connected
@@ -65,19 +62,19 @@ class robot:
                         
                         
             
-            if front <=70:
+            if front <=100:
                 print("front obstacle")
                 lm.stop(stop_action = "brake")
                 rm.stop(stop_action = "brake")
 
                 sleep(0.5)
-                lm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = -200, speed_sp = 300, stop_action = "brake")              
+                lm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = -300, speed_sp = 300, stop_action = "brake")              
             
-                sleep(1)
+                sleep(1.5)
 
-                lm.run_to_rel_pos(position_sp = -190, speed_sp = 300, stop_action = "brake")
-                rm.run_to_rel_pos(position_sp = 190, speed_sp = 300, stop_action = "brake")
+                lm.run_to_rel_pos(position_sp = -220, speed_sp = 300, stop_action = "brake")
+                rm.run_to_rel_pos(position_sp = 220, speed_sp = 300, stop_action = "brake")
 
                 sleep(2)
             elif (angle < -700):
