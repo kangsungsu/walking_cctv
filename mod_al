@@ -43,7 +43,8 @@ class robot:
             if color <15:
                 flag=0
                 while True:
-
+                    lm.run_forever(speed_sp = 300)
+                    rm.run_forever(speed_sp = 300)
                     color = cs.value()
                     while color>15:
                         sleep(0.5)
@@ -61,7 +62,10 @@ class robot:
                             break
                     if flag==1:
                         break
-                        
+            aaaa
+                lm.run_to_rel_pos(postion_sp = 600, speed_sp = speed, stop_action = "hold")
+                rm.run_to_rel_pos(position_sp = 600, speed_sp = speed, stop_action = "hold")
+            
             if right_2 < 1000:
                 add_speed = (15-(right_2 //10)) * 10
             
